@@ -1,0 +1,72 @@
+procedure gaussquadrule(N, A, B, C, MUZERO, SYMM, T, W);
+     value N, MUZERO, SYMM;
+     integer N; real MUZERO; boolean SYMM;
+     real array A, B, C, T, W;
+begin comment ;
+integer I, J, K, M, M1;
+real NORM, EPS, CT, ST, F, Q, AA, AI, AJ, A2, EIGMAX,
+     LAMBDA, LAMBD1, LAMBD2, RHO, R, DET, BI, BJ, B2, WJ, CJ;
+boolean EX;
+real procedure MAX(X, Y); value X, Y; real X, Y;
+     MAX := if X >= Y then X else Y;
+if SYMM then go to SETUP;
+comment ;
+     for I := 1 step 1 until N-1 do
+     begin AI := A[I]; A[I] := B[I]/AI;
+          B[I] := sqrt(C[I+1]/(AI*A[I+1]))
+     end;
+     A[N] := -B[N]/A[N];
+comment ;
+SETUP: B[0] := 0; NORM := 0;
+     for I := 1 step 1 until N-1 do
+     begin NORM := MAX(NORM, abs(B[I-1]) + abs(A[I]) + abs(B[I]));
+          W[I] := 0
+     end;
+     NORM := MAX(NORM, abs(A[N]) + abs(B[N-1]));
+     EPS := NORM*16.0^(-14);
+     W[1] := 1.0; W[N] := 0; M := N;
+     LAMBDA := LAMBD1 := LAMBD2 := RHO := NORM;
+     comment ;
+INSPECT: if M = 0 then go to SORT else I := K := M1 := M-1;
+     if abs(B[M1]) <= EPS then
+          begin T[M] := A[M]; W[M] := MUZERO*W[M]^2;
+               RHO := (if LAMBD1 < LAMBD2 then LAMBD1 else LAMBD2);
+               M := M1; go to INSPECT
+          end;
+comment ;
+     for I := I-1 while abs(B[I]) > EPS do K := I;
+comment ;
+     B2 := B[M1]^2; DET := sqrt((A[M1]-A[M])^2 + 4.0*B2);
+     AA := A[M1] + A[M];
+     LAMBD2 := 0.5*(if AA >= 0 then AA + DET else AA - DET);
+     LAMBD1 := (A[M1]*A[M]-B2)/LAMBD2;
+     EIGMAX := MAX(LAMBD1, LAMBD2);
+     if abs(EIGMAX-RHO) <= 0.125*abs(EIGMAX) then
+          LAMBDA := RHO := EIGMAX else RHO := EIGMAX;
+comment ;
+     CJ := B[K]; B[K-1] := A[K]-LAMBDA;
+     for J := K step 1 until M1 do
+     begin  R := sqrt(CJ^2 + B[J-1]^2);
+          ST := CJ/R; CT := B[J-1]/R; AJ := A[J];
+          B[J-1] := R; CJ := B[J+1]*ST;
+          B[J+1] := -B[J+1]*CT;
+          F := AJ*CT + B[J]*ST;
+          Q := B[J]*CT + A[J+1]*ST;
+          A[J] := F*CT + Q*ST; B[J] := F*ST - Q*CT;
+          WJ := W[J];
+          A[J+1] := AJ + A[J+1] - A[J];
+          W[J] := WJ*CT+W[J+1]*ST; W[J+1] := WJ*ST-W[J+1]*CT
+      end;
+      B[K-1] := 0; go to INSPECT;
+SORT: for M := N step -1 until 2 do
+         begin EX := false;
+              for I := 2 step 1 until M do
+                   if T[I-1] > T[I] then
+                        begin
+                             WJ := T[I-1]; T[I-1] := T[I]; T[I] := WJ;
+                             WJ := W[I-1]; W[I-1] := W[I]; W[I] := WJ;
+                             EX := true
+                        end;
+              if !EX then go to RETURN
+          end;
+RETURN: end gaussquadrule;

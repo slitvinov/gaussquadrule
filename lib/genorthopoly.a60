@@ -5,7 +5,7 @@ begin comment ;
     real array R[0:N+1,0:N+1]; real SUM;
     integer I, J, K;
     for I := 1 step 1 until N+1 do
-    for J := 1 step 1 until N+1 do
+    for J := I step 1 until N+1 do
     begin SUM := MU[I+J-2];
         for K := I-1 step -1 until 1 do
             SUM := SUM - R[K,I]*R[K,J];

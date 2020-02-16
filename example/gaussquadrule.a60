@@ -1,0 +1,50 @@
+procedure gaussquadrule(N, A, B, C, MUZERO, SYMM, T, W);
+value N, MUZERO, SYMM;
+integer N; real MUZERO; boolean SYMM;
+real array A, B, C, T, W;
+code;
+
+procedure classicorthopoly(kind, ALFA, BETA, N, A, B, MUZERO);
+value kind, N, ALFA, BETA, MUZERO;
+integer kind, N;
+real ALFA, BETA, MUZERO;
+real array A, B;
+code;
+
+procedure genorthopoly(N, MU, A, B);
+value N; integer N;
+real array MU, A, B;
+code;
+
+begin
+comment ;
+     real array A, C, T, W[1:10], MU[0:20], B[0:10];
+     real MUZERO; integer I, N;
+          N := 10;
+comment ;
+          outstring(1, "Legendre Quadrature\n");
+          classicorthopoly(1, 0, 0, N, A, B, MUZERO);
+          gaussquadrule(N, A, B, C, MUZERO, true, T, W);
+     outstring(1, "abscissas:\n"); print(T);
+     outstring(1, "weights:\n"); print(W);
+     for I := 0 step 1 until 2*N do MU[I] := 0;
+     for I := 0 step 2 until 2*N do MU[I] := 2.0/(I+1);
+          genorthopoly(N, MU, A, B);
+          MUZERO := MU[0];
+          gaussquadrule(N, A, B, C, MUZERO, true, T, W);
+     outstring(1, "abscissas:\n"); print(T);
+     outstring(1, "weights:\n"); print(W);
+comment ;
+          outstring(1, "Laguerre Quadrature. alpha = -0.75\n");
+          classicorthopoly(5, -0.75, 0, N, A, B, MUZERO);
+          gaussquadrule(N, A, B, C, MUZERO, true, T, W);
+     outstring(1, "abscissas:\n"); print(T);
+     outstring(1, "weights:\n"); print(W);
+     MU[0] := MUZERO := 1.772453850905516; comment gamma(0.5);
+     for I := 1 step 1 until 2*N do
+          MU[I] := (I - 0.5)*MU[I-1];
+          genorthopoly(N, MU, A, B);
+          gaussquadrule(N, A, B, C, MUZERO, true, T, W);
+     outstring(1, "abscissas:\n"); print(T);
+     outstring(1, "weights:\n"); print(W);
+END: end

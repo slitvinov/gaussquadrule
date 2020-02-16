@@ -1,0 +1,24 @@
+procedure classicorthopoly(kind, ALFA, BETA, N, A, B, MUZERO);
+value kind, N, ALFA, BETA, MUZERO;
+integer kind, N;
+real ALFA, BETA, MUZERO;
+real array A, B;
+code;
+
+begin
+  integer N;
+  N := 10;
+  begin
+      integer kind;
+      real ALFA, BETA, MUZERO;
+      real array A[1:N], B[1:N];
+      kind := 1;
+      ALFA := 0;
+      BETA := 0;
+      classicorthopoly(kind, ALFA, BETA, N, A, B, MUZERO);
+      outreal(1, MUZERO);
+      print(A);
+      print(B);
+      outstring(1, "\n")
+  end
+end

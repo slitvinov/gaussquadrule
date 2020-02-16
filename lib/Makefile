@@ -6,10 +6,11 @@ CFLAGS = -Og -g
 MARST = marst
 L = libgaussquadrule.a
 O = \
-classicorthopoly.o\
-genorthopoly.o\
 arcsin.o\
+classicorthopoly.o\
 gamma.o\
+gaussquadrule.o\
+genorthopoly.o\
 
 $L: $O; ar r $@ $O && ranlib $@
 .c.o:; $(CC) $(CFLAGS) $< -c

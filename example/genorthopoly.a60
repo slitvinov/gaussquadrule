@@ -1,0 +1,28 @@
+procedure genorthopoly(N, MU, A, B);
+value N; integer N;
+real array MU, A, B;
+code;
+
+begin
+  integer N;
+  ininteger(0, N);
+  begin
+      real array MU[0:2*N];
+      real array A[1:N];
+      real array B[1:N-1];
+      integer i;
+      for i := 0 step 1 until 2*N do
+          inreal(0, MU[i]);
+      genorthopoly(N, MU, A, B);
+      for i := 1 step 1 until N do
+      begin
+            outreal(1, A[i]);
+            outstring(1, "\n")
+      end;
+      for i := 1 step 1 until N-1 do
+      begin
+            outreal(1, B[i]);
+            outstring(1, "\n")
+      end      
+  end
+end

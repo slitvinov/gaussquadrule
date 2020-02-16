@@ -10,6 +10,8 @@ M = \
 arcsin\
 gamma\
 classicorthopoly\
+genorthopoly\
+gaussquadrule\
 
 all: $M
 .o:; $(LINK) $< $(MARST_LDFLAGS) $(LDFLAGS) -o $@
