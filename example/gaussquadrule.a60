@@ -46,5 +46,5 @@ comment ;
           genorthopoly(N, MU, A, B);
           gaussquadrule(N, A, B, C, MUZERO, true, T, W);
      outstring(1, "abscissas:\n"); print(T);
-     outstring(1, "weights:\n"); print(W);
-END: end
+     outstring(1, "weights:\n"); print(W)
+end

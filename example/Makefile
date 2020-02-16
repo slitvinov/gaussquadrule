@@ -13,6 +13,7 @@ gamma\
 gaussquadrule\
 genorthopoly\
 legendre\
+table\
 
 all: $M
 .o:; $(LINK) $< $(MARST_LDFLAGS) $(LDFLAGS) -o $@

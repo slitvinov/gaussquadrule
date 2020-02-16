@@ -1,0 +1,40 @@
+procedure gaussquadrule(N, A, B, C, MUZERO, SYMM, T, W);
+value N, MUZERO, SYMM;
+integer N; real MUZERO; boolean SYMM;
+real array A, B, C, T, W;
+code;
+
+procedure classicorthopoly(kind, ALFA, BETA, N, A, B, MUZERO);
+value kind, N, ALFA, BETA, MUZERO;
+integer kind, N;
+real ALFA, BETA, MUZERO;
+real array A, B;
+code;
+
+procedure preal(x);
+value x; real x;
+begin
+inline("printf(\"%.15e\", my_dsa.x_3);");
+end;
+
+begin
+     integer N, kind;
+     real alpha;
+     ininteger(0, N);
+     inreal(0, alpha);
+     kind := 5;
+     begin
+          integer i;
+          real array A, C, T, W[1:2*N], B[0:2*N];
+          real MUZERO;
+          classicorthopoly(kind, alpha, 0, N, A, B, MUZERO);
+          gaussquadrule(N, A, B, C, MUZERO, true, T, W);
+          for i := 1 step 1 until N do
+          begin
+               preal(T[i]);
+               outstring(1, " ");
+               preal(W[i]);
+               outstring(1, "\n")
+          end
+     end
+end
