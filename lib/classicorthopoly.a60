@@ -1,0 +1,56 @@
+procedure classicorthopoly(kind, ALFA, BETA, N, A, B, MUZERO);
+value kind, N, ALFA, BETA, MUZERO;
+integer kind, N;
+real ALFA, BETA, MUZERO;
+real array A, B;
+begin comment this procedure;
+integer I; real PI, ABI, A2B2;
+switch swt := LEGENDRE;
+PI := 2*ARCSIN(1);
+go to swt[kind];
+LEGENDRE: MUZERO := 2.0;
+    for I := 1 step 1 until N - 1 do
+    begin A[I] := 0; B[I] := I/sqrt(4*I**2-1) end;
+    A[N] := 0; go to RETURN;
+CHEBY1: MUZERO := PI;
+    for I := 1 step 1 until N-1 do
+    begin A[I] := 0; B[I] := 0.5 end;
+    B[1] := sqrt(0.5); A[N] := 0;
+    go to RETURN;
+CHEBY2: MUZERO := PI/2;
+    for I := 1 step 1 until N - 1 do
+    begin A[I] := 0; B[I] := 0.5 end;
+    A[N] := 0; go to RETURN;
+JACOBI: MUZERO := 2^(ALFA + BETA + 1)*GAMMA(ALFA + 1)*GAMMA(BETA + 1)
+           /GAMMA(ALFA + BETA + 1);
+    ABI := 2+ALFA+BETA; A[1] := (BETA-ALFA)/ABI;
+    B[1] := sqrt(4*(1+ALFA)*(1+BETA)/((ABI+1)*ABI^2));
+    A2B2 := BETA^2-ALFA^2;
+    for I := 2 step 1 until N-1 do
+      begin ABI := 2*I+ALFA+BETA;
+        A[I] := A2B2/((ABI-1)*ABI);
+        B[I] := sqrt(4*I*(I+ALFA)*(I+BETA)*(I+ALFA+BETA)/
+                     ((ABI^2-1)*ABI**2))
+      end;
+    ABI := 2*N + ALFA + BETA;
+    A[N] := A2B2/((ABI-2)*ABI);
+    go to RETURN;
+LAGUERRE: MUZERO := GAMMA(ALFA + 1.0);
+    for I := 1 step 1 until N-1 do
+      begin A[I] := 2*I-1+ALFA;
+        B[I] := -sqrt(I*(I+ALFA))
+      end;
+    A[N] := 2*N - 1 + ALFA; go to RETURN;
+HERMITE: MUZERO := sqrt(PI);
+    for I := 1 step 1 until N-1 do
+      begin A[I] := 0; B[I] := sqrt(I/2) end;
+    A[N] := 0;
+RETURN: end classicorthopoly;
+
+real procedure GAMMA(x);
+real x;
+code;
+
+real procedure ARCSIN(x);
+real x;
+code;
