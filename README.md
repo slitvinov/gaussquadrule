@@ -8,13 +8,14 @@ Needs MARST [marst].
 
     $ make
 
-Builds libgaussquadrule.a in [lib](lib/) and driver codes in
-[example](example/).
+Builds a library libgaussquadrule.a in [lib](lib/) and driver programs
+in [example](example/). A driver programs from the papere is
+[example/gaussquadrule.a60](example/gaussquadrule.a60).
 
 # Calculation of Gauss quadrature rules
 
 Abscissas and weights of the Gauss-Laguerre quadrature rule with alpha
-= -0.75 and N = 10 (Table in [GolubWelsch]). Computed using recurrent
+= -0.75 and N = 10 (Table in the paper). Computed using recurrent
 relatinship:
 
      $ echo 10 -0.75 | ./example/recurrent | awk '{printf "%02d %s\n", NR, $0}'
