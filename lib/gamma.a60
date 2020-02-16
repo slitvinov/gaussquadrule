@@ -1,0 +1,3 @@
+real procedure gamma(x);
+value x; real x;
+inline("my_dsa.retval.u.real_val = tgamma(my_dsa.x_1);");

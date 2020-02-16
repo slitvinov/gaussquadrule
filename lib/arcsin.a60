@@ -1,0 +1,3 @@
+real procedure arcsin(x);
+value x; real x;
+inline("my_dsa.retval.u.real_val = asin(my_dsa.x_1);");

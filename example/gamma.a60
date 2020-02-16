@@ -1,0 +1,10 @@
+real procedure gamma(x);
+real x;
+code;
+
+begin
+  real x;
+  inreal(0, x);
+  outreal(1, gamma(x));
+  outstring(1, "\n")
+end
