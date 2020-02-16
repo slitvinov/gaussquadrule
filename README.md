@@ -8,7 +8,8 @@ Needs MARST [marst].
 
     $ make
 
-Builds libgaussquadrule.a in [[lib/]] and driver codes in [[example/]].
+Builds libgaussquadrule.a in [lib](lib/) and driver codes in
+[example](example/).
 
 # Calculation of Gauss quadrature rules
 
