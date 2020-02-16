@@ -1,0 +1,5 @@
+procedure printreal(x);
+value x; real x;
+begin
+inline("printf(\"%.15e\", my_dsa.x_1);")
+end;

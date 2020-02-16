@@ -11,11 +11,9 @@ real ALFA, BETA, MUZERO;
 real array A, B;
 code;
 
-procedure preal(x);
+procedure printreal(x);
 value x; real x;
-begin
-inline("printf(\"%.15e\", my_dsa.x_3);");
-end;
+code;
 
 begin
      integer N, kind;
@@ -31,9 +29,9 @@ begin
           gaussquadrule(N, A, B, C, MUZERO, true, T, W);
           for i := 1 step 1 until N do
           begin
-               preal(T[i]);
+               printreal(T[i]);
                outstring(1, " ");
-               preal(W[i]);
+               printreal(W[i]);
                outstring(1, "\n")
           end
      end

@@ -44,5 +44,12 @@ Computed using moments:
      09 2.078921461777036e+01 6.193266747876431e-10
      10 2.857306016159728e+01 3.037759936902896e-13
 
+Gauss–Legendre quadrature (n = 3):
+
+     $ echo 3 | ./example/legendre
+     -7.745966692414834e-01 5.555555555555561e-01
+     1.110223024625157e-16 8.888888888888880e-01
+     7.745966692414833e-01 5.555555555555551e-01
+
 - [GolubWelsch] G.H. Golub and J.A. Welsch, "Calculation of Gauss quadrature rules", Math. Comp. 23 (1969), 221-230
 - [marst] https://www.gnu.org/software/marst

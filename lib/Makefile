@@ -11,6 +11,7 @@ classicorthopoly.o\
 gamma.o\
 gaussquadrule.o\
 genorthopoly.o\
+printreal.o\
 
 $L: $O; ar r $@ $O && ranlib $@
 .c.o:; $(CC) $(CFLAGS) $< -c
