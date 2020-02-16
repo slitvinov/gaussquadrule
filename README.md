@@ -4,9 +4,11 @@ Algol code from [GolubWelsch].
 
 # Install
 
-    Needs MARST [marst] to compile.
+Needs MARST [marst].
 
     $ make
+
+Builds libgaussquadrule.a in [[lib/]] and driver codes in [[example/]].
 
 # Calculation of Gauss quadrature rules
 
