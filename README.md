@@ -51,7 +51,15 @@ Gauss–Legendre quadrature (n = 3):
      1.110223024625157e-16 8.888888888888880e-01
      7.745966692414833e-01 5.555555555555551e-01
 
-Computed using moments:
+Computed using moments. w(x) = 1, interval is [-1; 1].
+
+     $ integrate(x^i, x, -1, 1);
+                                         i
+                                    (- 1)      1
+    (%o3)                           ------ + -----
+                                    i + 1    i + 1
+
+It is 2/(i + 1) for odd i and 0 for even:
 
      $ awk 'BEGIN { print n = 3
 	  for (i = 0; i <= 2*n; i++)
