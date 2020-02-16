@@ -1,3 +1,13 @@
+# Introduction
+
+Algol code from [GolubWelsch].
+
+# Install
+
+    Needs MARST [marst] to compile.
+
+    $ make
+
 # Calculation of Gauss quadrature rules
 
 Abscissas and Weights of the Gauss-Laguerre Quadrature Reule with
@@ -15,4 +25,5 @@ alpha = -0.75 and N = 10:
      2.078921462107011e+01 6.193266726796800e-10
      2.857306016492211e+01 3.037759926517505e-13
 
-- G.H. Golub and J.A. Welsch, "Calculation of Gauss quadrature rules", Math. Comp. 23 (1969), 221-230
+- [GolubWelsch] G.H. Golub and J.A. Welsch, "Calculation of Gauss quadrature rules", Math. Comp. 23 (1969), 221-230
+- [marst] https://www.gnu.org/software/marst
