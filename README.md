@@ -14,7 +14,7 @@ Builds libgaussquadrule.a in [lib](lib/) and driver codes in
 # Calculation of Gauss quadrature rules
 
 Abscissas and weights of the Gauss-Laguerre quadrature rule with alpha
-= -0.75 and N = 10:
+= -0.75 and N = 10 [GolubWelsch]:
 
      $ echo 10 -0.75 | ./example/table
      2.766655867079714e-02 2.566765557790772e+00
