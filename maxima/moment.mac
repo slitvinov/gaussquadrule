@@ -2,3 +2,4 @@ assume(n >= 0, alpha > 0);
 integrate(exp(-x) * x^alpha * x^n, x, 0, +inf);
 
 /* gamma(n + alpha + 1) */
+integrate(x^n, x, -1, 1);

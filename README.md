@@ -18,7 +18,7 @@ Abscissas and weights of the Gauss-Laguerre quadrature rule with alpha
 = -0.75 and N = 10 (Table in the paper). Computed using recurrent
 relatinship:
 
-     $ echo 10 -0.75 | ./example/recurrent | awk '{printf "%02d %s\n", NR, $0}'
+     $ echo 10 -0.75 | example/recurrent | awk '{printf "%02d %s\n", NR, $0}'
      01 2.766655867079714e-02 2.566765557790772e+00
      02 4.547844226059476e-01 7.733479703443399e-01
      03 1.382425761158597e+00 2.331328349732201e-01
@@ -32,7 +32,7 @@ relatinship:
 
 Computed using moments:
 
-     $ echo 10 -0.75 | ./example/moment | awk '{printf "%02d %s\n", NR, $0}'
+     $ echo 10 -0.75 | example/moment | awk '{printf "%02d %s\n", NR, $0}'
      01 2.766655865361854e-02 2.566765557441376e+00
      02 4.547844223365491e-01 7.733479704606758e-01
      03 1.382425760414822e+00 2.331328351325242e-01
@@ -46,10 +46,17 @@ Computed using moments:
 
 Gauss–Legendre quadrature (n = 3):
 
-     $ echo 3 | ./example/legendre
+     $ echo 3 | example/legendre
      -7.745966692414834e-01 5.555555555555561e-01
      1.110223024625157e-16 8.888888888888880e-01
      7.745966692414833e-01 5.555555555555551e-01
+
+Computed using moments:
+
+     $ awk 'BEGIN {print n = 3; for (i = 0; i <= 2*n; i++) print i % 2 ? 0 : 2/(i + 1)}' | bin/moment
+     -7.745964755923886e-01 5.555561111112493e-01
+     1.110223024625157e-16 8.888877777775009e-01
+     7.745964755923885e-01 5.555561111112495e-01
 
 - [GolubWelsch] G.H. Golub and J.A. Welsch, "Calculation of Gauss quadrature rules", Math. Comp. 23 (1969), 221-230
 - [marst] https://www.gnu.org/software/marst
