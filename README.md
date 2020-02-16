@@ -53,7 +53,10 @@ Gauss–Legendre quadrature (n = 3):
 
 Computed using moments:
 
-     $ awk 'BEGIN {print n = 3; for (i = 0; i <= 2*n; i++) print i % 2 ? 0 : 2/(i + 1)}' | bin/moment
+     $ awk 'BEGIN { print n = 3
+	  for (i = 0; i <= 2*n; i++)
+	    print i % 2 ? 0 : 2/(i + 1)
+	} ' | bin/moment
      -7.745964755923886e-01 5.555561111112493e-01
      1.110223024625157e-16 8.888877777775009e-01
      7.745964755923885e-01 5.555561111112495e-01
