@@ -14,7 +14,8 @@ Builds libgaussquadrule.a in [lib](lib/) and driver codes in
 # Calculation of Gauss quadrature rules
 
 Abscissas and weights of the Gauss-Laguerre quadrature rule with alpha
-= -0.75 and N = 10. Computed using recurrent relatinship:
+= -0.75 and N = 10 (Table in [GolubWelsch]). Computed using recurrent
+relatinship:
 
      $ echo 10 -0.75 | ./example/recurrent | awk '{printf "%02d %s\n", NR, $0}'
      01 2.766655867079714e-02 2.566765557790772e+00
