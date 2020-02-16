@@ -1,0 +1,31 @@
+procedure gaussquadrule(N, A, B, C, MUZERO, SYMM, T, W);
+value N, MUZERO, SYMM;
+integer N; real MUZERO; boolean SYMM;
+real array A, B, C, T, W;
+code;
+
+procedure classicorthopoly(kind, ALFA, BETA, N, A, B, MUZERO);
+value kind, N, ALFA, BETA, MUZERO;
+integer kind, N;
+real ALFA, BETA, MUZERO;
+real array A, B;
+code;
+
+begin
+comment ;
+     integer N;
+     ininteger(0, N);
+     begin
+          real array A, C, T, W[1:N], MU[0:2*N], B[0:N];
+          real MUZERO;
+          integer i;
+          classicorthopoly(1, 0, 0, N, A, B, MUZERO);
+          gaussquadrule(N, A, B, C, MUZERO, true, T, W);
+          for i := 1 step 1 until N do
+          begin
+               outreal(1, T[i]);
+               outreal(1, W[i]);
+               outstring(1, "\n")
+          end
+     end;
+END: end

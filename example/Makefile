@@ -8,10 +8,11 @@ LINK = $(CC)
 MARST = marst
 M = \
 arcsin\
-gamma\
 classicorthopoly\
-genorthopoly\
+gamma\
 gaussquadrule\
+genorthopoly\
+legendre\
 
 all: $M
 .o:; $(LINK) $< $(MARST_LDFLAGS) $(LDFLAGS) -o $@
