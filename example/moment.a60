@@ -1,0 +1,42 @@
+procedure gaussquadrule(N, A, B, C, MUZERO, SYMM, T, W);
+value N, MUZERO, SYMM;
+integer N; real MUZERO; boolean SYMM;
+real array A, B, C, T, W;
+code;
+
+procedure genorthopoly(N, MU, A, B);
+value N; integer N;
+real array MU, A, B;
+code;
+
+real procedure gamma(x);
+real x;
+code;
+
+procedure printreal(x);
+value x; real x;
+code;
+
+begin
+     integer N;
+     real alpha;
+     ininteger(0, N);
+     inreal(0, alpha);
+     begin
+          integer i;
+          real array A, C, T, MU[0:2*N], W[1:2*N], B[0:2*N];
+          real MUZERO;
+	  for i := 0 step 1 until 2*N do
+	       MU[i] := gamma(alpha + i + 1);
+          MUZERO := MU[0];
+	  genorthopoly(N, MU, A, B);
+	  gaussquadrule(N, A, B, C, MUZERO, true, T, W);
+          for i := 1 step 1 until N do
+          begin
+               printreal(T[i]);
+               outstring(1, " ");
+               printreal(W[i]);
+               outstring(1, "\n")
+          end
+     end
+end

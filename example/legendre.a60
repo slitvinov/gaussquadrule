@@ -11,21 +11,26 @@ real ALFA, BETA, MUZERO;
 real array A, B;
 code;
 
+procedure printreal(x);
+value x; real x;
+code;
+
 begin
 comment ;
      integer N;
      ininteger(0, N);
      begin
-          real array A, C, T, W[1:N], MU[0:2*N], B[0:N];
-          real MUZERO;
-          integer i;
-          classicorthopoly(1, 0, 0, N, A, B, MUZERO);
-          gaussquadrule(N, A, B, C, MUZERO, true, T, W);
-          for i := 1 step 1 until N do
-          begin
-               outreal(1, T[i]);
-               outreal(1, W[i]);
-               outstring(1, "\n")
-          end
+	  real array A, C, T, W[1:N], MU[0:2*N], B[0:N];
+	  real MUZERO;
+	  integer i;
+	  classicorthopoly(1, 0, 0, N, A, B, MUZERO);
+	  gaussquadrule(N, A, B, C, MUZERO, true, T, W);
+	  for i := 1 step 1 until N do
+	  begin
+	       printreal(T[i]);
+	       outstring(1, " ");
+	       printreal(W[i]);
+	       outstring(1, "\n")
+	  end
      end;
 END: end

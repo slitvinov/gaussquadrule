@@ -7,14 +7,7 @@ CFLAGS = -Og -g
 LINK = $(CC)
 MARST = marst
 M = \
-arcsin\
-classicorthopoly\
-gamma\
-gaussquadrule\
-genorthopoly\
-legendre\
 moment\
-recurrent\
 
 all: $M
 .o:; $(LINK) $< $(MARST_LDFLAGS) $(LDFLAGS) -o $@

@@ -1,5 +1,6 @@
 D =\
 lib\
+bin\
 example\
 
 all:
