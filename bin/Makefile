@@ -1,21 +1,16 @@
 .POSIX:
-.SUFFIXES: .c .o .a60
-.PHONY: all lint clean
+.SUFFIXES:
+.SUFFIXES: .c
+.SUFFIXES: .a60
 
 MARST_LDFLAGS = -static  -L../lib -lgaussquadrule -lalgol -lm
 CFLAGS = -Og -g
-LINK = $(CC)
 MARST = marst
 M = \
 moment\
 
 all: $M
-.o:; $(LINK) $< $(MARST_LDFLAGS) $(LDFLAGS) -o $@
-.c.o:; $(CC) $(CFLAGS) $< -c
+.c:; $(CC) -o $@ $(CFLAGS) $< $(LDFLAGS) $(MARST_LDFLAGS)
 .a60.c:; $(MARST) $< -o $@
 
-.c:
-%: %.c
-
-lint:; make CFLAGS='-Wall -Wextra -g -Og'
-clean:; rm -f $M $(M:=.o) $(M:=.c)
+clean:; -rm $M

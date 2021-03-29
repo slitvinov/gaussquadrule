@@ -9,7 +9,7 @@ Needs MARST [marst].
     $ make
 
 Builds a library libgaussquadrule.a in [lib](lib/) and driver programs
-in [example](example/). A driver program from the papere is
+in [example](example/). A driver program from the paper is
 [example/gaussquadrule.a60](example/gaussquadrule.a60).
 
 # Calculation of Gauss quadrature rules
